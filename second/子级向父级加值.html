@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script type="text/babel">	
+
+		class Child extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.num=55;
+			}
+			render(){
+				this.props.cb(this.num);
+				return <div>
+						{this.props.name}
+					</div>
+			}
+
+		}
+
+		class Parent extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.a=12;
+			}
+
+			fn(num){
+				alert(num);
+			}
+
+			render(){
+				return <div>
+						<div>qqqqqq</div>
+						<Child name={this.a} cb={this.fn.bind(this)}/>
+						<div>bbbbbb</div>
+					</div>	
+			}
+
+		}
+		$(function(){
+			ReactDOM.render(
+				<Parent />,
+				$("blue-view")[0]
+			)
+		})
+	</script>
+</head>
+<body>
+	<blue-view></blue-view>
+</body>
+</html>

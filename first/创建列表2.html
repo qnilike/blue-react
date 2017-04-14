@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script type="text/babel">	
+		class Item extends React.Component{
+
+			constructor(...args){
+				super(...args);
+			}
+
+			render(){
+				return <li>{this.props.value}</li>
+			}
+		}
+
+		class List extends React.Component{
+
+			constructor(...args){
+				super(...args);
+				this.state={
+					arr:[12,6,4,9]
+				};
+			}
+
+			fn(){
+				this.setState({
+					arr:this.state.arr.concat([Math.random()])
+				});
+			}
+
+			render(){
+				
+				var result=[];
+				var arr=this.state.arr;
+				for(var i=0;i<arr.length;i++){
+					result.push(<Item key={i} value={arr[i]}/>);
+				}
+				return <ul>
+					<input type="button" value="按钮" onClick={this.fn.bind(this)}/>
+					{result}
+				</ul>
+			}
+
+		}
+		window.onload=function(){
+			var oDiv=document.getElementById("div1");
+			ReactDOM.render(
+				<List/>,
+				oDiv
+			)
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div> 
+</body>
+</html>

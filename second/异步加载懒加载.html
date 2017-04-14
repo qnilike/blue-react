@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		img{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script type="text/babel">	
+		class LazyLoad extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.aImgPath=this.props.imgs.split(",")
+				const _this=this;
+				window.onscroll=function(){
+					var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+					console.log(scrollTop);
+					if(scrollTop >=_this.refs['div1'].children)
+					
+				};
+			}
+
+			render(){
+				//alert(this.aImgPath);
+				var arr=[];
+				for(var i=0;i<this.aImgPath.length;i++){
+					arr.push(<img key={i} data-src={'img/'+this.aImgPath[i]} alt='logo'/>);
+				}
+				return <div className="box" ref="div1">
+						{arr}
+					</div>
+			}
+		}
+		$(function(){
+			ReactDOM.render(
+				<LazyLoad imgs="psu1.jpg,psu2.jpg,psu3.jpg,psu4.jpg"/>,
+				$("blue-view")[0]
+			)
+		})
+	</script>
+</head>
+<body>
+	<blue-view></blue-view>
+</body>
+</html>

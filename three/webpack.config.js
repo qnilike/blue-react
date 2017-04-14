@@ -1,0 +1,14 @@
+module.exports={
+	entry:'./index.js',
+	output:{
+        path:__dirname,
+        filename:'bundle.js'
+    },
+	devtool:'source-map',//开发辅助工具，不能下载，开发工具自动生成的
+	module:{
+		loaders:[
+            {test:/\.css$/,loader:'style!css'},
+            //{test:/\.js$/,loader:'react-hot!babel',exclude:/node_modules/},
+        ]
+	}
+};

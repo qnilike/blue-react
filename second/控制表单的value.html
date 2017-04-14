@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		img{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script type="text/babel">	
+		class UserLoginForm extends React.Component{
+
+			render(){
+				return <form action="http://www.baidu.com" method="get">
+							用户名：<input type="text" name="username" defaultValue={this.props.a}/><br/><br/>
+							<input type="submit" value="提交" />
+					</form>
+			}
+
+		}
+		$(function(){
+			ReactDOM.render(
+				<UserLoginForm a="123"/>,
+				$("blue-view")[0]
+			)
+		})
+	</script>
+</head>
+<body>
+	<blue-view></blue-view>
+</body>
+</html>

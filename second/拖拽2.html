@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			position: absolute;
+		}
+	</style>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script type="text/babel">	
+		class Drag extends React.Component{
+			constructor(...args){
+				super(...args);
+				//alert(this.refs['div1']);
+				//会出现undefined，因为组件没有生成找不到
+			}
+			componentDidMount(){
+				var oDiv=this.refs['div1'];
+				oDiv.onmousedown=function(){
+					document.onmousemove=function(){
+
+					}
+				}
+			}
+			render(){
+				return <div className="box" ref="div1">
+						11111
+					</div>
+			}
+		}
+		$(function(){
+			ReactDOM.render(
+				<Drag/>,
+				$("blue-view")[0]
+			)
+		})
+	</script>
+</head>
+<body>
+	<blue-view></blue-view>
+</body>
+</html>

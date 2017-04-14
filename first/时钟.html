@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script type="text/babel">	
+		class Clock extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={ h:0,m:0,s:0 };
+				var _this=this;
+				setInterval(function(){
+					_this.tick();
+				},1000)
+			}
+			componentDidMount(){
+				this.tick();
+			}
+			tick(){
+				var oDate=new Date();
+				this.setState({
+					h:oDate.getHours(),
+					m:oDate.getMinutes(),
+					s:oDate.getSeconds()
+				});
+			}
+			render(){
+				return <div>
+					<span>{this.state.h}:</span>
+					<span>{this.state.m}:</span>
+					<span>{this.state.s}</span>
+				</div>
+			}
+			componentWillUpdate(){
+				console.log("组件更新之前");
+			}
+			componentDidUpdate(){
+				console.log("组件刚刚更新之后");
+			}
+		}
+		window.onload=function(){
+			var oDiv=document.getElementById("div1");
+			ReactDOM.render(
+				<Clock />,
+				oDiv
+			);
+		};
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div> 
+</body>
+</html>

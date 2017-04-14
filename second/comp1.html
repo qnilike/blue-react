@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过ref完成获取dom操作</title>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script type="text/babel">	
+		class Title extends React.Component{
+			constructor(...args){
+				super(...args)
+			}
+			fn(){
+				/*var oSpan=this.refs.ospan;
+				oSpan.style.color="#f60";*/
+				$(this.refs['ospan']).css('color','red');
+			}
+			render(){
+				return <div>
+						<input type="button" value="按钮" onClick={this.fn.bind(this)}/>
+						<span ref="ospan">1234qd</span>
+					</div>
+			}
+		}
+		$(function(){
+			ReactDOM.render(
+				<Title/>,
+				$("#div1")[0]
+			)
+		})
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div> 
+</body>
+</html>

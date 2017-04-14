@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script type="text/babel">	
+		class Title extends React.Component{
+			constructor(...args){
+				super(...args)
+				this.state={color:'red'};
+			}
+			fn(){
+				this.setState({
+					color:'gray'
+				});
+			}
+			render(){
+				return <div>
+						<input type="button" value="按钮" onClick={this.fn.bind(this)}/>
+						<span style={{color:this.state.color}}>qwweadad</span>
+					</div>
+			}
+		}
+		$(function(){
+			ReactDOM.render(
+				<Title/>,
+				$("#div1")[0]
+			)
+		})
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div> 
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/react.js"></script>
+	<script src="../js/react-dom.js"></script>
+	<script src="../js/browser.js"></script>
+	<script type="text/babel">	
+		/*class Comp extends React.Component{
+			constructor(...args){
+				super(...args);//super超类,就是父类,里边的参数是es6的写法，可选参数
+				this.state={value:""};
+			}
+
+			fn(ev){
+				//alert("111");
+				this.setState({
+					value:ev.target.value
+				});
+			}
+
+			render(){
+				return <div>
+					<input type="text" onChange={this.fn.bind(this)} />
+					<span>{this.state.value}</span>
+				</div>
+			}
+		}*/
+		var classes="header";
+		var Divider=React.createClass({
+			render:function(){
+				return (
+						<div className={classes}>
+							<input type="text"/>
+							<span>{this.props.children}</span>
+						</div>
+					);
+			}
+		});
+		window.onload=function(){
+			var oDiv=document.getElementById("div1");
+			ReactDOM.render(
+				<Divider>1qaaaaa</Divider>,
+				oDiv
+			);
+		};
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+</body>
+</html>
